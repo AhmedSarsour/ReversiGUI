@@ -4,13 +4,13 @@ package Reversi;
  *      student 2: Eliad Arzuan 206482622
  */
 public abstract class Board {
-    private int rows;   //The board rows.
-    private int cols;   //The board cols
-    private Point blacks[];//The board black places.
-    private Point whites[];//The board white places.
-    private int numBlacks;//The number of current black players.
-    private int numWhites;//The number of current white players.
-    private char[][]board;
+    protected int rows;   //The board rows.
+    protected int cols;   //The board cols
+    protected Point blacks[];//The board black places.
+    protected Point whites[];//The board white places.
+    protected int numBlacks;//The number of current black players.
+    protected int numWhites;//The number of current white players.
+    protected char[][]board;
     /**
      * Board.
      * The constructor of our class Board.
@@ -45,14 +45,14 @@ public abstract class Board {
         put(this.margins().getX() / 2,this.margins().getY() / 2,'O');
         put(this.margins().getX() / 2,this.margins().getY() / 2 + 1,'X');
         put(this.margins().getX() / 2 + 1,this.margins().getY() / 2,'X');
-        put(this.margins().getX() / 2 + 1,this.margins().getY() / 2,'O');
+        put(this.margins().getX() / 2 + 1,this.margins().getY() / 2 + 1,'O');
     }
     /**
      * show function.
      * Showing the board by the format of the game we requested to do.
      * The function is const because it does not change the inner board structure.
      **/
-    public abstract void Show();
+    public abstract void show();
     /**
      * isValid.
      * The function is const because we don't change the inner members.
@@ -83,7 +83,7 @@ public abstract class Board {
     public boolean put(int x, int y, char c) {
     //It is not a valid point.
 
-        if(x > this.margins().getX()|| y >this.margins().getY() || x <= 0 || y <= 0) {
+        if(x >= this.margins().getX()|| y >=this.margins().getY() || x <= 0 || y <= 0) {
             return false;
         }
 
