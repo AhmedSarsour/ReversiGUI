@@ -1,15 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--<?import javafx.scene.control.Label?>-->
-<!--<?import javafx.scene.layout.ColumnConstraints?>-->
-<!--<?import javafx.scene.layout.GridPane?>-->
-<!--<?import javafx.scene.layout.RowConstraints?>-->
-
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiController" fx:id="root" spacing="10">
-   <VBox spacing="10">
-      <Button>Start Game</Button>
-      <Button>End Game</Button>
-   </VBox>
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiGameController" fx:id="root" spacing="10">
+    <VBox spacing="10">
+        <Button>Start Game</Button>
+        <Button>End Game</Button>
+    </VBox>
 </HBox>

@@ -38,13 +38,14 @@ public class ReversiBoard extends GridPane {
     }
     public ReversiBoard(int rows, int cols) {
         this.board = new GuiBoard(rows, cols);
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiGame.fxml"));
-//        fxmlLoader.setController(this);
-//        fxmlLoader.setController(this);
-//        try { fxmlLoader.load(); }
-//        catch (IOException exception){
-//            throw new RuntimeException(exception);
-//        }
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
+        fxmlLoader.setController(this);
+        fxmlLoader.setRoot(this);
+        try { fxmlLoader.load();
+        }
+        catch (IOException exception){
+            throw new RuntimeException(exception);
+        }
     }
 
     public void draw() {
