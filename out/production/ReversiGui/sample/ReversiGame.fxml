@@ -1,6 +1,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
-<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiGameController" fx:id="root" spacing="10">
+<HBox  xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiGameController" fx:id="root" spacing="10">
     <VBox spacing="10">
         <Button>Start Game</Button>
         <Button>End Game</Button>

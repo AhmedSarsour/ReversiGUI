@@ -2,9 +2,11 @@ package sample;
 
 import Reversi.Board;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.w3c.dom.css.Rect;
 
 import java.io.IOException;
 public class ReversiBoard extends GridPane {
@@ -28,10 +30,15 @@ public class ReversiBoard extends GridPane {
             int cellWidth = width / this.cols;
             for (int i = 0; i < this.rows; i++) {
                 for (int j = 0; j < this.cols; j++) {
-                    if (this.get(i,j) == ' ')
-                        reversiController.add(new Rectangle(cellWidth, cellHeight, Color.WHITE), j, i);
-                    else
-                        reversiController.add(new Rectangle(cellWidth, cellHeight, Color.BLACK), j, i);
+                    if (this.get(i,j) == ' ') {
+                        String str = "" +
+                                "|  |";
+                        reversiController.add(new Label(str), i, j);                    }
+                        else {
+                        String str = "| " + this.get(i, j) + " |";
+                        reversiController.add(new Label(str), i, j);
+                        // reversiController.add(new Rectangle(cellWidth, cellHeight, Color.BLACK), j, i);
+                    }
                 }
             }
         }
