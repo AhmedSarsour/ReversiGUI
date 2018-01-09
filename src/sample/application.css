@@ -1,6 +1,6 @@
 .root {
-/*-fx-background-image: url("../Resources/background.jpg")*/
--fx-background-color: red;
+-fx-background-image: url("Resources/background.jpg")
+/*-fx-background-color: red;*/
 
 }
 .label {
