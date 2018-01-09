@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiBoard">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -14,6 +13,6 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Label prefHeight="17.0" prefWidth="67.0" text="aaa" />
+      <Label prefHeight="17.0" prefWidth="67.0" text="adasds" />
    </children>
 </GridPane>
