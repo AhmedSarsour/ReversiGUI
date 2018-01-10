@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ReversiGui.iml" filepath="$PROJECT_DIR$/ReversiGui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reversi.iml" filepath="$PROJECT_DIR$/Reversi.iml" />
     </modules>
   </component>
 </project>

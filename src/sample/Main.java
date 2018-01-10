@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	@Override
+
 	public void start(Stage primaryStage) {
-		try {
+	    try {
 			HBox root = (HBox)FXMLLoader.load(getClass().getResource("ReversiGame.fxml"));
 			Scene scene = new Scene(root,520,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -22,7 +23,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

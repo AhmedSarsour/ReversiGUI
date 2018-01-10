@@ -5,12 +5,17 @@ package Reversi;
  */
 public class main {
     public static void main(String[] args) {
-        Board board = new ConsoleBoard(8, 8);
+        int rows, cols;
+        ReadFile r = new ReadFile();
+        r.openFile();
+        r.readFile();
+        rows = r.getBoardSize();
+        cols = rows;
+        r.closeTheFile();
+        Board board = new ConsoleBoard(rows, cols);
         //The moves.
         Moves moves = new Moves(board);
         //The game.
-
-
 
         Game game = new Game(board, moves);
         game.run();

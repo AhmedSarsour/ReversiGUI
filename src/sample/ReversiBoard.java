@@ -32,12 +32,16 @@ public class ReversiBoard extends GridPane {
                 for (int j = 0; j < this.cols; j++) {
                     if (this.get(i,j) == ' ') {
                         String str = "" +
-                                "|  |";
+                                "|  ";
                         reversiController.add(new Label(str), i, j);                    }
                         else {
-                        String str = "| " + this.get(i, j) + " |";
+                        String str = "|" + this.get(i, j);
                         reversiController.add(new Label(str), i, j);
                         // reversiController.add(new Rectangle(cellWidth, cellHeight, Color.BLACK), j, i);
+                    }
+                    if (j + 1 == this.cols) {
+                        String str = " |";
+                        reversiController.add(new Label(str),i,j);
                     }
                 }
             }
