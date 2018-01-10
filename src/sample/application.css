@@ -29,3 +29,6 @@
 -fx-fill: rgb(85,87,83);
 }
 
+#start {
+-fx-background-color:red
+}

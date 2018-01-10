@@ -1,4 +1,4 @@
-package Reversi;
+package sample;
 //these 2 imporst are needed for the files.
 import java.io.*;
 import java.util.*;

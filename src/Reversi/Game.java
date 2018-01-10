@@ -3,10 +3,10 @@ package Reversi;
 import java.util.Scanner;
 
 public class Game {
-    Board board; //Reference to the board.
-    Moves moves; //Reference to the moves factory.
-    Player black; //Black player.
-    Player white; //White player.
+    private Board board; //Reference to the board.
+    private Moves moves; //Reference to the moves factory.
+    private Player black; //Black player.
+    private Player white; //White player.
 
     /**
      * Game.
@@ -94,6 +94,7 @@ public class Game {
             }
         }
         System.out.println();
+
     }
 
     /**
