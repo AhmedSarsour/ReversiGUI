@@ -1,0 +1,38 @@
+.root {
+/*-fx-background-image: url("Resources/background.jpg");
+-fx-background-size:cover;*/
+-fx-background-color:#AF9483
+
+/*-fx-background-repeat: no-repeat no-repeat;*
+
+
+/*-fx-background-color: red;*/
+
+}
+
+.label {
+-fx-weight:50;
+-fx-height:50;
+-fx-font-weight: bold;
+-fx-text-fill: #333333;
+-fx-text-align:center
+}
+.button {
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-background-color: linear-gradient(#61a2b1, #2A5058);
+}
+#welcomeText {
+-fx-font-size: 32px;
+-fx-font-family: Arial;
+-fx-fill: rgb(85,87,83);
+}
+
+#dataGame {
+-fx-background-color:#AF9483
+
+}
+
+#board{
+-fx-background-color:#AF9483
+}

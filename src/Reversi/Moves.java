@@ -108,12 +108,17 @@ public class Moves {
             for (int j = 0; j < 8; j++) {
                 if (board.isValid(x + areas[j].getX(), y + areas[j].getY())) {
                     if (board.get(x + areas[j].getX(), y + areas[j].getY()) == ' ') {
+
+
                         Point point = new Point(x + areas[j].getX(), y + areas[j].getY());
                         //Potential moves
                         Point []potential = scanForPlayer(x, y, -areas[j].getX(),
                                 -areas[j].getY(), true);
                         if (potential != null) { //If is not null
+                            //Reset found.
+                            found = false;
                             if (index != 0) {
+                                //Search for moves.
                                 for (int k = 0; k < index; k++) {
                                     if (moves[k].getPoint().equals(point)) {
                                         current = k;
@@ -171,6 +176,8 @@ public class Moves {
                                     -areas[j].getY(), false);
                             //Check if not null.
                             if (potential != null) {
+                                //Reset found.
+                                found = false;
                                 if (index != 0) {
                                     //Check if the point exist (for swapp from some directions).
                                     for (int k = 0; k < index; k++) {

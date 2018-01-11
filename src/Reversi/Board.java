@@ -46,6 +46,19 @@ public abstract class Board {
         put(this.margins().getX() / 2,this.margins().getY() / 2 + 1,'X');
         put(this.margins().getX() / 2 + 1,this.margins().getY() / 2,'X');
         put(this.margins().getX() / 2 + 1,this.margins().getY() / 2 + 1,'O');
+
+//        put(4, 3, 'X');
+//        put(4, 4, 'X');
+//        put(4, 5, 'X');
+//
+//
+//        put(5, 3, 'O');
+//        put(5, 4, 'O');
+//        put(5, 5, 'O');
+
+
+
+
     }
     /**
      * show function.
