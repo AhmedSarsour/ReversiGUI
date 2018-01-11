@@ -1,6 +1,7 @@
 package sample;
 
 import Reversi.GuiGame;
+import Reversi.ReadFile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -22,7 +23,11 @@ public class ReversiGameController implements Initializable {
      @Override
      public void initialize(URL location, ResourceBundle resources) {
          //Getting information from the file.
-         int size = 8;
+         ReadFile f = new ReadFile();
+         f.openFile();
+         f.readFile();
+         int size = f.getBoardSize();
+         f.closeTheFile();
          ReversiBoard reversiBoard = new ReversiBoard(size,size);
          reversiBoard.setPrefWidth(400);
          reversiBoard.setPrefHeight(400);
@@ -66,7 +71,6 @@ public class ReversiGameController implements Initializable {
      * The function called while clicking on start button
      */
      public void startAction() {
-
          AlertBox.display("alert", "clicked");
      }
 

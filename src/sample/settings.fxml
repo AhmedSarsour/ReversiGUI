@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<?import java.lang.*?>-->
+<!--<?import java.util.*?>-->
+<!--<?import javafx.scene.*?>-->
+<!--<?import javafx.scene.control.*?>-->
+<!--<?import javafx.scene.layout.*?>-->
+<!--<AnchorPane xmlns="http://javafx.com/javafx"-->
+<!--xmlns:fx="http://javafx.com/fxml"-->
+<!--fx:controller="sample.RowsSize"-->
+<!--prefHeight="400.0" prefWidth="600.0">-->
+<!--</AnchorPane>-->
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<HBox fx:id="root" prefHeight="138.0" prefWidth="391.0" spacing="20" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettingsController">
+    <VBox prefHeight="64.0" prefWidth="71.0" spacing="10">
+         <Button prefHeight="25.0" prefWidth="82.0" text="Player 1:">Player 1:</Button>
+        <Button prefHeight="25.0" prefWidth="82.0">Player 2:</Button>
+        <Button prefHeight="25.0" prefWidth="125.0" text="Size">Rows Size</Button>
+        <Button fx:id="applyButton" onAction="#applyAction" prefHeight="25.0" prefWidth="82.0" text="apply"/>
+    </VBox>
+    <VBox prefHeight="64.0" prefWidth="71.0" spacing="10">
+        <ComboBox fx:id="firstColor" editable="true" prefHeight="20.0" prefWidth="67.0" promptText="Color" visibleRowCount="20">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Black" />
+                <String fx:value="Yellow" />
+                <String fx:value="Pink" />
+                <String fx:value="Blue" />
+                <String fx:value="Aqua" />
+                <String fx:value="Gray" />
+
+            </FXCollections>
+        </items>
+        </ComboBox>
+        <ComboBox fx:id="secondColor" editable="true" prefHeight="20.0" prefWidth="67.0" promptText="Color" visibleRowCount="20">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="White" />
+                <String fx:value="Orange" />
+                <String fx:value="Green" />
+                <String fx:value="Red" />
+                <String fx:value="Aqua" />
+                <String fx:value="DarkGreen" />
+            </FXCollections>
+        </items>
+        </ComboBox>
+        <ComboBox fx:id="size" editable="true" prefHeight="20" prefWidth="67.0" promptText="pick" visibleRowCount="20">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="4" />
+                    <String fx:value="5" />
+                    <String fx:value="6" />
+                    <String fx:value="7" />
+                    <String fx:value="8" />
+                    <String fx:value="9" />
+                    <String fx:value="10" />
+                    <String fx:value="11" />
+                    <String fx:value="12" />
+                    <String fx:value="13" />
+                    <String fx:value="14" />
+                    <String fx:value="15" />
+                    <String fx:value="16" />
+                    <String fx:value="17" />
+                    <String fx:value="18" />
+                    <String fx:value="19" />
+                    <String fx:value="20" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </VBox>
+</HBox>
