@@ -1,6 +1,8 @@
 .root {
--fx-background-image: url("Resources/background.jpg");
--fx-background-size:cover;
+/*-fx-background-image: url("Resources/background.jpg");
+-fx-background-size:cover;*/
+-fx-background-color:#AF9483
+
 /*-fx-background-repeat: no-repeat no-repeat;*
 
 
@@ -27,10 +29,10 @@
 }
 
 #dataGame {
--fx-background-color:red
+-fx-background-color:#AF9483
 
 }
 
 #board{
--fx-background-color:white
+-fx-background-color:#AF9483
 }

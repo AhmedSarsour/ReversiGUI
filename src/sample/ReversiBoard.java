@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
@@ -43,31 +44,26 @@ public class ReversiBoard extends GridPane {
             for (int i = 0; i < this.rows; i++) {
                 for (int j = 0; j < this.cols; j++) {
                     Rectangle rectangle;
-                    if (this.get(i,j) == ' ') {
-                        rectangle = new Rectangle(cellWidth, cellHeight,
-                                Color.AQUA);
-                        reversiController.add(rectangle, i, j);
-                        String str = this.get(i, j) + "";
-                        Label lbl = new Label(str);
-                        GridPane.setConstraints(lbl, i , j);
-                        reversiController.getChildren().add(lbl);
-
+                    rectangle = new Rectangle(cellWidth, cellHeight,
+                            Color.web("#B93A32"));
+                    reversiController.add(rectangle, i, j);
+                    if (this.get(i, j) == Board.firstPlayerChar()) {
+                        Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, Color.BLACK);
+                        GridPane.setConstraints(circle, i, j);
+                        reversiController.getChildren().add(circle);
                     }
-                        else {
-                        rectangle = new Rectangle(cellWidth, cellHeight,
-                                Color.YELLOW);
-                        reversiController.add(rectangle, i, j);
-                        String str ="      " +  this.get(i, j) + "";
-                        Label lbl = new Label(str);
-                        GridPane.setConstraints(lbl, i , j);
-                        reversiController.getChildren().add(lbl);
+
+                    if (this.get(i, j) == Board.secondPlayerChar()) {
+                        Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, Color.WHITE);
+                        GridPane.setConstraints(circle, i, j);
+                        reversiController.getChildren().add(circle);
                     }
                     rectangle.setStroke(Color.BLACK);
                     //We meed to create final integers to pass the value in to lambda exmpression
                     final int rowIndex = i;
                     final int colIndex = j;
                     //When we are clicking on the rectangle it should recognize
-                    rectangle.setOnMouseClicked(e-> {
+                    rectangle.setOnMouseClicked(e -> {
                         clicked = new Point(rowIndex, colIndex);
                     });
                 }

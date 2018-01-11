@@ -211,4 +211,16 @@ public abstract class Board {
     public Point margins() {
         return new Point(this.rows, this.cols);
     }
+
+    public static char firstPlayerChar() {
+        return 'X';
+    }
+    public static char secondPlayerChar() {
+        return 'O';
+    }
+
+    public static char emptyChar() {
+        return ' ';
+    }
+
 }

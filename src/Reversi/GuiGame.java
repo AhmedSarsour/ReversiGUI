@@ -1,7 +1,4 @@
 package Reversi;
-
-import Reversi.Board;
-import Reversi.Game;
 import javafx.scene.control.Label;
 import sample.AlertBox;
 import sample.ReversiBoard;
@@ -9,6 +6,8 @@ import sample.ReversiBoard;
 /**
  * GuiGame.
  * The game manager of our gui
+ * We are still using names like black and white in spite of we changed the game to many colors.
+ * We are doing it just for comfort.
  */
 public class GuiGame extends Game {
     //The reversi board in order to use the gui.
@@ -40,6 +39,9 @@ public class GuiGame extends Game {
     /**
      * setLabels.
      * Setting the labels of the score.
+     * @param lblBlack the label of the first player's points
+     * @param lblWhite the label of the second player's points.
+     * @param lblCurrent the label which contains the current turn.
      */
     public void setLabels(Label lblBlack, Label lblWhite, Label lblCurrent) {
         this.lblCurrent = lblCurrent;
@@ -133,11 +135,15 @@ public class GuiGame extends Game {
                         turn.passTurn();
                     }
                 }
+                //Setting the text of labels.
                 if (turn.getTurn()) {
+                    //First player turn.
                     lblCurrent.setText("Current player: Black");
                 } else {
+                    //Second player turn.
                     lblCurrent.setText("Current player: White");
                 }
+                //Showing the current scores of the players.
                 lblBlack.setText("Black Player score: " + board.getNumberBlacks());
                 lblWhite.setText("White Player score: " + board.getNumberWhites());
                 //Reset the point we clicked on to (-1,-1) until clicking another area on the board.
@@ -145,6 +151,5 @@ public class GuiGame extends Game {
             }
 
         });
-
        }
     }
