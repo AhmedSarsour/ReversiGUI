@@ -1,7 +1,10 @@
 package sample;
 
+import Reversi.Board;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
@@ -14,17 +17,46 @@ import java.util.ResourceBundle;
 public class ReversiGameController implements Initializable {
     @FXML
     private HBox root;
-    @FXML
-    private Button btn;
+
      @Override
      public void initialize(URL location, ResourceBundle resources) {
-         ReversiBoard reversiBoard = new ReversiBoard(8,8);
+         //Getting information from the file.
+         int size = 8;
+         ReversiBoard reversiBoard = new ReversiBoard(size,size);
          reversiBoard.setPrefWidth(400);
          reversiBoard.setPrefHeight(400);
+
+         reversiBoard.setPadding(new Insets(50,50,50,50));
+         //reversiBoard.setVgap(16);
+         //reversiBoard.setHgap(20);
+         reversiBoard.setAlignment(Pos.CENTER);
 
          root.getChildren().add(0, reversiBoard);
          reversiBoard.draw();
 
+         reversiBoard.setOnMouseClicked(e -> {
+             Board board = reversiBoard.getBoard();
+             AlertBox.display("title", "Just clicked " + reversiBoard.getClicked().toString());
+             int xPut = reversiBoard.getClicked().getX() + 1;
+             int yPut = reversiBoard.getClicked().getY() + 1;
+             // In case of wrong point to put it won't put it
+             board.put(xPut, yPut, 'X');
+             board.show();
+             //Rest the clicked point to -1,-1 in case of clicking out of board area
+             reversiBoard.resetClicked();
+
+         });
+
+
+         root.widthProperty().addListener((observable, oldValue, newValue) -> {
+             double boardNewWidth = newValue.doubleValue() - 240;
+             reversiBoard.setPrefWidth(boardNewWidth);
+             reversiBoard.draw();
+         });
+         root.heightProperty().addListener((observable, oldValue, newValue) -> {
+             reversiBoard.setPrefHeight(newValue.doubleValue() - 120);
+             reversiBoard.draw();
+         });
      }
 
     /**
@@ -32,7 +64,7 @@ public class ReversiGameController implements Initializable {
      * The function called while clicking on start button
      */
      public void startAction() {
-         System.out.println("clicked me");
+
          AlertBox.display("alert", "clicked");
      }
 

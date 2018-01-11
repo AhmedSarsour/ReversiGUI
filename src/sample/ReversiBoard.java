@@ -1,19 +1,22 @@
 package sample;
 
 import Reversi.Board;
+import Reversi.Point;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.w3c.dom.css.Rect;
 
 import java.io.IOException;
 public class ReversiBoard extends GridPane {
+    //Our reversi controller in order to use it on GuiBoard.
     private ReversiBoard reversiController = this;
+    //The board contains reversi.
     private Board board;
+    //Member of point we clicked on the board.
+    private Point clicked;
+    //GuiBoard
     private class GuiBoard extends Board {
         /**
          * The constructor of our class.
@@ -24,51 +27,103 @@ public class ReversiBoard extends GridPane {
         private GuiBoard(int rows, int cols) {
             super(rows,cols);
         }
+        /**
+         * show.
+         * Showing the board now on gui.
+         */
         public void show(){
+            //Clearing the gui.
             reversiController.getChildren().clear();
+            //Height and weight by our gui size.
             int height = (int)reversiController.getPrefHeight();
             int width = (int)reversiController.getPrefWidth();
             int cellHeight = height / this.rows;
             int cellWidth = width / this.cols;
+            //Moving on the board items.
             for (int i = 0; i < this.rows; i++) {
                 for (int j = 0; j < this.cols; j++) {
-//                    if (this.get(i,j) == ' ') {
-//                        String str = "| " + this.get(i, j) + " |";
-//                       // reversiController.add(new Label(str), i, j);
-//                        GridPane.setConstraints(new Label(str), i , j);
-//                    }
-//                        else {
-                        String str = "| "  +  this.get(i, j) + " |";
+                    Rectangle rectangle;
+                    if (this.get(i,j) == ' ') {
+                        rectangle = new Rectangle(cellWidth, cellHeight,
+                                Color.AQUA);
+                        reversiController.add(rectangle, i, j);
+                        String str = this.get(i, j) + "";
                         Label lbl = new Label(str);
-                       // reversiController.add(new Label(str), i, j);
                         GridPane.setConstraints(lbl, i , j);
                         reversiController.getChildren().add(lbl);
-                        // reversiController.add(new Rectangle(cellWidth, cellHeight, Color.BLACK), j, i);
-                  //  }
+
+                    }
+                        else {
+                        rectangle = new Rectangle(cellWidth, cellHeight,
+                                Color.YELLOW);
+                        reversiController.add(rectangle, i, j);
+                        String str ="      " +  this.get(i, j) + "";
+                        Label lbl = new Label(str);
+                        GridPane.setConstraints(lbl, i , j);
+                        reversiController.getChildren().add(lbl);
+                    }
+                    rectangle.setStroke(Color.BLACK);
+                    //We meed to create final integers to pass the value in to lambda exmpression
+                    final int rowIndex = i;
+                    final int colIndex = j;
+                    //When we are clicking on the rectangle it should recognize
+                    rectangle.setOnMouseClicked(e-> {
+                        clicked = new Point(rowIndex, colIndex);
+                    });
                 }
             }
-
-
         }
     }
+
+    /**
+     * ReversiBoard.
+     * The constructor of our class.
+     * @param rows the rows size of the board.
+     * @param cols the columns size of the board.
+     */
     public ReversiBoard(int rows, int cols) {
+        this.clicked = new Point(-1, -1);
         this.board = new GuiBoard(rows, cols);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
-        //this.setPadding(new Insets(50  ,50,50,50));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
-        //Setting the padding
-        this.setPadding(new Insets(20,20,20,20));
-        this.setVgap(16);
-        this.setHgap(20);
-
-        try { fxmlLoader.load();
+        try {
+            //Loading the board
+            fxmlLoader.load();
         }
         catch (IOException exception){
             throw new RuntimeException(exception);
         }
     }
 
+    /**
+     * getClicked.
+     * @return the point clicked.
+     */
+    public Point getClicked() {
+        return this.clicked;
+    }
+
+    /**
+     * resetClicked.
+     * Reset the clicked point to -1,-1 in order to do not touch the board when clicking forbidden area.
+     */
+    public void resetClicked() {
+        this.clicked = new Point(-1, -1);
+    }
+
+    /**
+     * getBoard.
+     * @return our game board.
+     */
+    public Board getBoard() {
+        return this.board;
+    }
+
+    /**
+     * draw()
+     * Drawing our reversi board.
+     */
     public void draw() {
         this.board.show();
     }

@@ -35,7 +35,7 @@ public class Point {
      *
      * @return the y value.
      */
-    int getY() {
+    public int getY() {
         return this.y;
     }
 

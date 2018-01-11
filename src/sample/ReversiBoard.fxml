@@ -1,2 +1,2 @@
-<fx:root alignment="CENTER" type="javafx.scene.layout.GridPane" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root id="board" type="javafx.scene.layout.GridPane" xmlns:fx="http://javafx.com/fxml/1">
 </fx:root>

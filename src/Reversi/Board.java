@@ -6,10 +6,10 @@ package Reversi;
 public abstract class Board {
     protected int rows;   //The board rows.
     protected int cols;   //The board cols
-    protected Point blacks[];//The board black places.
-    protected Point whites[];//The board white places.
-    protected int numBlacks;//The number of current black players.
-    protected int numWhites;//The number of current white players.
+    private Point blacks[];//The board black places.
+    private Point whites[];//The board white places.
+    private int numBlacks;//The number of current black players.
+    private int numWhites;//The number of current white players.
     protected char[][]board;
     /**
      * Board.
@@ -83,7 +83,7 @@ public abstract class Board {
     public boolean put(int x, int y, char c) {
     //It is not a valid point.
 
-        if(x >= this.margins().getX()|| y >=this.margins().getY() || x <= 0 || y <= 0) {
+        if(x > this.margins().getX()|| y >this.margins().getY() || x <= 0 || y <= 0) {
             return false;
         }
 

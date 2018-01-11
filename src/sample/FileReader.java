@@ -5,7 +5,7 @@ import java.util.*;
 // this import is needed for "exit".
 import static java.lang.System.exit;
 //this class is made for reading the menuInformation text file.
-public class ReadFile {
+public class FileReader {
     private Scanner x;
     private String firstPlayer;
     private String secondPlayer;
