@@ -5,7 +5,7 @@ package Reversi;
  */
 public class main {
     public static void main(String[] args) {
-        Board board = new ConsoleBoard(8, 8);
+        Board board = new ConsoleBoard(3, 3);
         //The moves.
 
         //The game.

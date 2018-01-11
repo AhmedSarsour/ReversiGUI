@@ -1,3 +1,0 @@
-first player : white
-second player : black
-board size : 8

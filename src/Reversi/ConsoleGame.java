@@ -81,6 +81,7 @@ public class ConsoleGame extends Game {
         boolean blackTurn = true;
         //Stops when 2 players dont have more moves.
         while (numBlackMoves != 0 && numWhiteMoves != 0) {
+            System.out.println("Num black moves " + numBlackMoves);
             //Showing the board.
             board.show();
             //The black turn.

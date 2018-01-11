@@ -99,7 +99,8 @@ public class GuiGame extends Game {
             int numWhiteMoves = white.getNumMoves();
             boolean blackTurn = turn.getTurn();
 
-            if (numBlackMoves != 0 && numWhiteMoves != 0) {
+            //Continue if there are moves for both
+            if (numBlackMoves != 0 || numWhiteMoves != 0) {
                 //Getting the input point
                 Point clicked = reversiBoard.getClicked();
                 //If clicked area outside the board do not do anything.
@@ -116,8 +117,8 @@ public class GuiGame extends Game {
                     if (numBlackMoves > 0) { // Found black moves
                         putPlayer(blackMoves, numBlackMoves, 'X', clicked);
                     } else { //No possible moves.
-                        System.out.println("No possible moves." +
-                                " Play passes back to the other player. Press any key to continue.");
+                        AlertBox.display("Message ","No possible moves." +
+                                " Play passes back to the other player");
                         turn.passTurn();
                     }
                 } else { //White turn
@@ -130,8 +131,8 @@ public class GuiGame extends Game {
                         putPlayer(whiteMoves, numWhiteMoves, 'O', clicked);
                     }
                     else { //No possible moves.
-                        System.out.println("No possible moves. Play passes back to the other player." +
-                                " Press any key to continue.");
+                        AlertBox.display("Message",
+                                "No possible moves. Play passes back to the other player.");
                         turn.passTurn();
                     }
                 }
@@ -148,7 +149,26 @@ public class GuiGame extends Game {
                 lblWhite.setText("White Player score: " + board.getNumberWhites());
                 //Reset the point we clicked on to (-1,-1) until clicking another area on the board.
                 reversiBoard.resetClicked();
+
+
+                // End of the game - there are no possible moves for both players.
+                if (black.getNumMoves() == 0 && white.getNumMoves() == 0) {
+                    int numBlacks = board.getNumberBlacks();
+                    int numWhites = board.getNumberWhites();
+                    // More blacks than whites - first player wins.
+                    if (numBlacks > numWhites) {
+                        AlertBox.display("End of game", "The winner is the player1!");
+                    } else if (numBlacks < numWhites) { //More whites than black - second player wins.
+                        AlertBox.display("End of game", "The winner is the player2!");
+                    } else { //A draw - same points
+                        AlertBox.display("End of game", "This is a draw!");
+
+                    }
+                }
             }
+
+
+
 
         });
        }
