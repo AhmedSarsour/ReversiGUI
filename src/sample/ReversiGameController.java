@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,11 +34,17 @@ public class ReversiGameController implements Initializable {
 
          root.getChildren().add(0, reversiBoard);
          reversiBoard.draw();
-
+         VBox vBox = (VBox) root.getChildren().get(1);
+         Label lblCurrent = (Label)vBox.getChildren().get(0);
+         Label lblBlack = (Label)vBox.getChildren().get(1);
+         Label lblWhite = (Label)vBox.getChildren().get(2);
          //Creating gui game.
         GuiGame game = new GuiGame(reversiBoard.getBoard());
+
         //Giving it our reversi board.
         game.setReversiBoard(reversiBoard);
+        //Giving it the labels
+         game.setLabels(lblBlack, lblWhite, lblCurrent);
         //Running the game.
         game.run();
         //Handaling window resize - the code is from the recitation.

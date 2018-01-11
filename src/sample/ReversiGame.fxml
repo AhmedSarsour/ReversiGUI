@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox fx:id="root" spacing="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="sample.ReversiGameController">
-    <VBox id="start" alignment="TOP_RIGHT" prefHeight="37.0" prefWidth="124.0" spacing="10">
-        <Button id="btnStart" onAction="#startAction" prefHeight="25.0" prefWidth="130.0">Start Game</Button>
-        <Button id="btnEnd" onAction="#endAction" prefHeight="25.0" prefWidth="125.0">End Game</Button>
+<?import javafx.scene.control.Label?>
+<HBox fx:id="root" spacing="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiGameController">
+    <VBox id="dataGame" prefHeight="215.0" prefWidth="124.0" spacing="10">
+        <Label id="currentPlayer" text="Current Player: Black"/>
+        <Label id="blackScore" text ="Black Player score: 2" />
+        <Label id="whiteScore" text ="White Player score: 2" />
+        <Button id="btnMenu" onAction="#startAction" prefHeight="25.0" prefWidth="130.0">Menu</Button>
     </VBox>
 </HBox>

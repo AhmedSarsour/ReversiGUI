@@ -9,8 +9,8 @@
 }
 
 .label {
--fx-weight:20;
--fx-height:20;
+-fx-weight:50;
+-fx-height:50;
 -fx-font-weight: bold;
 -fx-text-fill: #333333;
 -fx-text-align:center
@@ -26,8 +26,9 @@
 -fx-fill: rgb(85,87,83);
 }
 
-#start {
+#dataGame {
 -fx-background-color:red
+
 }
 
 #board{
