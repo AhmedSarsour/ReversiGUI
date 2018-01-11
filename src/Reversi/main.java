@@ -7,12 +7,12 @@ public class main {
     public static void main(String[] args) {
         Board board = new ConsoleBoard(8, 8);
         //The moves.
-        Moves moves = new Moves(board);
+
         //The game.
 
 
 
-        Game game = new Game(board, moves);
+        Game game = new ConsoleGame(board);
         game.run();
     }
 }

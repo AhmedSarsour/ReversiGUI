@@ -1,11 +1,10 @@
 package sample;
 
-import Reversi.Board;
+import Reversi.GuiGame;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -34,25 +33,20 @@ public class ReversiGameController implements Initializable {
          root.getChildren().add(0, reversiBoard);
          reversiBoard.draw();
 
-         reversiBoard.setOnMouseClicked(e -> {
-             Board board = reversiBoard.getBoard();
-             AlertBox.display("title", "Just clicked " + reversiBoard.getClicked().toString());
-             int xPut = reversiBoard.getClicked().getX() + 1;
-             int yPut = reversiBoard.getClicked().getY() + 1;
-             // In case of wrong point to put it won't put it
-             board.put(xPut, yPut, 'X');
-             board.show();
-             //Rest the clicked point to -1,-1 in case of clicking out of board area
-             reversiBoard.resetClicked();
-
-         });
-
-
+         //Creating gui game.
+        GuiGame game = new GuiGame(reversiBoard.getBoard());
+        //Giving it our reversi board.
+        game.setReversiBoard(reversiBoard);
+        //Running the game.
+        game.run();
+        //Handaling window resize - the code is from the recitation.
+         //Handaling width resize.
          root.widthProperty().addListener((observable, oldValue, newValue) -> {
              double boardNewWidth = newValue.doubleValue() - 240;
              reversiBoard.setPrefWidth(boardNewWidth);
              reversiBoard.draw();
          });
+         //Handaling height resize.
          root.heightProperty().addListener((observable, oldValue, newValue) -> {
              reversiBoard.setPrefHeight(newValue.doubleValue() - 120);
              reversiBoard.draw();

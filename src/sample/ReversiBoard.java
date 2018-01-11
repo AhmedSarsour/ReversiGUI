@@ -119,7 +119,6 @@ public class ReversiBoard extends GridPane {
     public Board getBoard() {
         return this.board;
     }
-
     /**
      * draw()
      * Drawing our reversi board.
