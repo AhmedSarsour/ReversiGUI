@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,9 +12,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-public class SettingsController{
+import java.util.ResourceBundle;
+
+public class SettingsController implements Initializable{
     @FXML
     public Pane pane;
     @FXML
@@ -22,6 +26,8 @@ public class SettingsController{
     private ComboBox<Integer> size;
     @FXML
     public Button applyButton;
+    @FXML
+    public Button backButton,player1, player2,btnSize;
     final String fileName = "menuInfo.txt";
     public void applyAction() {
 
@@ -44,7 +50,8 @@ public class SettingsController{
             System.out.println(listSets.get(i));
         }
         sr.writeToFile(fileName, listSets);
-
+        AlertBox.display("Settings", "The settings has changed.");
+        backAction();
     }
 
     public void backAction() {
@@ -63,4 +70,34 @@ public class SettingsController{
         }
 
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        pane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            double boardNewWidth = newValue.doubleValue()/10;
+            applyButton.setPrefWidth(boardNewWidth);
+            backButton.setPrefWidth(boardNewWidth);
+            firstColor.setPrefWidth(boardNewWidth);
+            secondColor.setPrefWidth(boardNewWidth);
+            size.setPrefWidth(boardNewWidth);
+            player1.setPrefWidth(boardNewWidth);
+            player2.setPrefWidth(boardNewWidth);
+            btnSize.setPrefWidth(boardNewWidth);
+
+        });
+        //Handaling height resize.
+        pane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            double boardNewHeight = newValue.doubleValue()/10;
+            applyButton.setPrefHeight(boardNewHeight);
+            backButton.setPrefHeight(boardNewHeight);
+            firstColor.setPrefHeight(boardNewHeight /2);
+            secondColor.setPrefHeight(boardNewHeight / 2);
+            size.setPrefHeight(boardNewHeight / 2);
+            player1.setPrefWidth(boardNewHeight);
+            player2.setPrefWidth(boardNewHeight);
+            btnSize.setPrefWidth(boardNewHeight);
+
+        });
+    }
+
 }

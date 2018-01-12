@@ -10,10 +10,11 @@
 <GridPane xmlns="http://javafx.com/javafx"
           fx:id = "menu"
           alignment="CENTER"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.MenuController"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox id="start" alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="124.0" spacing="10">
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="sample.MenuController"
+          prefHeight="400.0" prefWidth="600.0">
+    <VBox id="start" alignment="TOP_CENTER" prefHeight="37.0" prefWidth="500.0" spacing="10">
+        <Label id="welcomeText" text="Welcome to Reversi Game"/>
         <Button id="btnStart" onAction="#StartAction" prefHeight="25.0" prefWidth="130.0">START GAME</Button>
         <Button id="btnSets" onAction="#SettingsAction" prefHeight="25.0" prefWidth="125.0">SETTINGS</Button>
         <Button id="btnEnd" onAction="#ExitAction" prefHeight="25.0" prefWidth="125.0">EXIT</Button>
