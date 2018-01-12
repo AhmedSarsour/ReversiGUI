@@ -1,30 +1,27 @@
 package sample;
 
-import Reversi.ReadFile;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-
-public class SettingsController implements Initializable {
+public class SettingsController{
     @FXML
-    private Pane root;
+    public Pane pane;
     @FXML
     public ComboBox<String> firstColor, secondColor;
     @FXML
     private ComboBox<Integer> size;
     @FXML
     public Button applyButton;
+    final String fileName = "menuInfo.txt";
     public void applyAction() {
-        ReadFile f = new ReadFile();
-        f.openFile();
+
+        SettingsReader sr = new SettingsReader(fileName);
+        //f.clearFile();
         List listSets = new ArrayList<>();
         if (firstColor.getValue() == null) {
             firstColor.getSelectionModel().select(0);
@@ -41,24 +38,9 @@ public class SettingsController implements Initializable {
         for (int i = 0; i < listSets.size(); i++) {
             System.out.println(listSets.get(i));
         }
-        f.writeToFile(listSets);
-        f.closeTheFile();
-    }
+        sr.writeToFile(fileName, listSets);
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        /**
-         * i dont know but i think we need to add something like Pane.draw()?
-         */
-        //        root.widthProperty().addListener((observable, oldValue, newValue) -> {
-//            double boardNewWidth = newValue.doubleValue() - 240;
-//            reversiBoard.setPrefWidth(boardNewWidth);
-//            reversiBoard.draw();
-//        });
-//        //Handling height resize.
-//        root.heightProperty().addListener((observable, oldValue, newValue) -> {
-//            reversiBoard.setPrefHeight(newValue.doubleValue() - 120);
-//            reversiBoard.draw();
-//        });
+
+
     }
 }

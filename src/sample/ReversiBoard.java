@@ -40,6 +40,13 @@ public class ReversiBoard extends GridPane {
             int width = (int)reversiController.getPrefWidth();
             int cellHeight = height / this.rows;
             int cellWidth = width / this.cols;
+            //Reading from file in order to get the color.
+            SettingsReader settingsReader = new SettingsReader("menuInfo.txt");
+            //The colors of the players
+            Color firstColor = settingsReader.getFirstPlayerColor();
+            Color secondColor = settingsReader.getSecondPlayerColor();
+            //Closing the file we just opened
+            settingsReader.closeTheFile();
             //Moving on the board items.
             for (int i = 0; i < this.rows; i++) {
                 for (int j = 0; j < this.cols; j++) {
@@ -48,13 +55,13 @@ public class ReversiBoard extends GridPane {
                             Color.web("#B93A32"));
                     reversiController.add(rectangle, i, j);
                     if (this.get(i, j) == Board.firstPlayerChar()) {
-                        Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, Color.BLACK);
+                        Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, firstColor);
                         GridPane.setConstraints(circle, i, j);
                         reversiController.getChildren().add(circle);
                     }
 
                     if (this.get(i, j) == Board.secondPlayerChar()) {
-                        Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, Color.WHITE);
+                        Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, secondColor);
                         GridPane.setConstraints(circle, i, j);
                         reversiController.getChildren().add(circle);
                     }

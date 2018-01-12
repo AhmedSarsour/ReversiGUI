@@ -1,7 +1,6 @@
 package sample;
 
 import Reversi.GuiGame;
-import Reversi.ReadFile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -23,43 +22,41 @@ public class ReversiGameController implements Initializable {
      @Override
      public void initialize(URL location, ResourceBundle resources) {
          //Getting information from the file.
-         ReadFile f = new ReadFile();
-         f.openFile();
-         f.readFile();
-         int size = f.getBoardSize();
-         f.closeTheFile();
+         SettingsReader settingsReader = new SettingsReader("menuInfo.txt");
+         int size = settingsReader.getBoardSize();
          ReversiBoard reversiBoard = new ReversiBoard(size,size);
          reversiBoard.setPrefWidth(400);
          reversiBoard.setPrefHeight(400);
 
-         reversiBoard.setPadding(new Insets(50,50,50,50));
-         //reversiBoard.setVgap(16);
-         //reversiBoard.setHgap(20);
+         reversiBoard.setPadding(new Insets(20,20,20,20));
          reversiBoard.setAlignment(Pos.CENTER);
 
          root.getChildren().add(0, reversiBoard);
          reversiBoard.draw();
          VBox vBox = (VBox) root.getChildren().get(1);
-         Label lblCurrent = (Label)vBox.getChildren().get(0);
-         Label lblBlack = (Label)vBox.getChildren().get(1);
-         Label lblWhite = (Label)vBox.getChildren().get(2);
+         Label lblCurrent = (Label)vBox.getChildren().get(1);
+         Label lblBlack = (Label)vBox.getChildren().get(2);
+         Label lblWhite = (Label)vBox.getChildren().get(3);
          //Creating gui game.
         GuiGame game = new GuiGame(reversiBoard.getBoard());
-
+        //Giving our game the color names.
+        game.setColors(settingsReader.getFirstPlayer(), settingsReader.getSecondPlayer());
+        //Closing the file.
+         settingsReader.closeTheFile();
         //Giving it our reversi board.
         game.setReversiBoard(reversiBoard);
         //Giving it the labels
          game.setLabels(lblBlack, lblWhite, lblCurrent);
         //Running the game.
         game.run();
-        //Handling window resize - the code is from the recitation.
-         //Handling width resize.
+        //Handaling window resize - the code is from the recitation.
+         //Handaling width resize.
          root.widthProperty().addListener((observable, oldValue, newValue) -> {
              double boardNewWidth = newValue.doubleValue() - 240;
              reversiBoard.setPrefWidth(boardNewWidth);
              reversiBoard.draw();
          });
-         //Handling height resize.
+         //Handaling height resize.
          root.heightProperty().addListener((observable, oldValue, newValue) -> {
              reversiBoard.setPrefHeight(newValue.doubleValue() - 120);
              reversiBoard.draw();
@@ -71,6 +68,7 @@ public class ReversiGameController implements Initializable {
      * The function called while clicking on start button
      */
      public void startAction() {
+
          AlertBox.display("alert", "clicked");
      }
 

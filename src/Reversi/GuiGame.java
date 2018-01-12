@@ -17,6 +17,8 @@ public class GuiGame extends Game {
     private Label lblCurrent = null;
     private Label lblBlack = null;
     private Label lblWhite = null;
+    private String firstPlayerColor;
+    private String secondPlayerColor;
 
     /**
      * GuiGame.
@@ -47,8 +49,16 @@ public class GuiGame extends Game {
         this.lblCurrent = lblCurrent;
         this.lblBlack = lblBlack;
         this.lblWhite = lblWhite;
+        lblCurrent.setText("Current player: " + firstPlayerColor.toUpperCase());
+        lblBlack.setText(firstPlayerColor.toUpperCase() + " Player score: " + board.getNumberBlacks());
+        lblWhite.setText(secondPlayerColor.toUpperCase() + " Player score: " + board.getNumberWhites());
+
     }
 
+    public void setColors(String firstPlayerColor, String secondPlayerColor) {
+        this.firstPlayerColor = firstPlayerColor;
+        this.secondPlayerColor = secondPlayerColor;
+    }
     /**
      * checkClicked.
      * Checks if the move we want to do is ok.
@@ -139,14 +149,14 @@ public class GuiGame extends Game {
                 //Setting the text of labels.
                 if (turn.getTurn()) {
                     //First player turn.
-                    lblCurrent.setText("Current player: Black");
+                    lblCurrent.setText("Current player: " + firstPlayerColor.toUpperCase());
                 } else {
                     //Second player turn.
-                    lblCurrent.setText("Current player: White");
+                    lblCurrent.setText("Current player: " + secondPlayerColor.toUpperCase());
                 }
                 //Showing the current scores of the players.
-                lblBlack.setText("Black Player score: " + board.getNumberBlacks());
-                lblWhite.setText("White Player score: " + board.getNumberWhites());
+                lblBlack.setText(firstPlayerColor.toUpperCase() + " Player score: " + board.getNumberBlacks());
+                lblWhite.setText(secondPlayerColor.toUpperCase() + " Player score: " + board.getNumberWhites());
                 //Reset the point we clicked on to (-1,-1) until clicking another area on the board.
                 reversiBoard.resetClicked();
 
