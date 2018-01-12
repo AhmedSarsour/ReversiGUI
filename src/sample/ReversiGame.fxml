@@ -11,6 +11,6 @@
         <Label id="currentPlayer"/>
         <Label id="blackScore"/>
         <Label id="whiteScore"/>
-        <Button id="btnMenu" onAction="#startAction" prefHeight="25.0" prefWidth="130.0">Menu</Button>
+        <Button id="btnMenu" onAction="#menuAction" prefHeight="25.0" prefWidth="130.0">Menu</Button>
     </VBox>
 </HBox>

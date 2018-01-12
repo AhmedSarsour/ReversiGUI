@@ -1,14 +1,20 @@
 package sample;
 
 import Reversi.GuiGame;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,8 +25,10 @@ public class ReversiGameController implements Initializable {
     @FXML
     private HBox root;
 
+
      @Override
      public void initialize(URL location, ResourceBundle resources) {
+
          //Getting information from the file.
          SettingsReader settingsReader = new SettingsReader("menuInfo.txt");
          int size = settingsReader.getBoardSize();
@@ -67,12 +75,24 @@ public class ReversiGameController implements Initializable {
      * startAction
      * The function called while clicking on start button
      */
-     public void startAction() {
+     public void menuAction(ActionEvent event) throws  IOException {
 
-         AlertBox.display("alert", "clicked");
+         AlertBox.display("alert", "This game is going to be restarted.\n Are you sure?");
+         try {
+             Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+             //Getting the stage from the root
+             Stage window = (Stage)root.getScene().getWindow();
+
+             Scene menuScene = new Scene(menu);
+
+             window.setScene(menuScene);
+             menuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+             window.show();
+         } catch (IOException e) {
+            System.out.println("Porblem reading Menu.fxml");
+         }
+        // Stage windows = (Stage) ((Node) event.getSource().get
      }
 
-    public void endAction() {
-        AlertBox.display("End", "You chose to end the game");
-    }
 }
