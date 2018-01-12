@@ -52,14 +52,14 @@ public class ReversiGameController implements Initializable {
          game.setLabels(lblBlack, lblWhite, lblCurrent);
         //Running the game.
         game.run();
-        //Handaling window resize - the code is from the recitation.
-         //Handaling width resize.
+        //Handling window resize - the code is from the recitation.
+         //Handling width resize.
          root.widthProperty().addListener((observable, oldValue, newValue) -> {
              double boardNewWidth = newValue.doubleValue() - 240;
              reversiBoard.setPrefWidth(boardNewWidth);
              reversiBoard.draw();
          });
-         //Handaling height resize.
+         //Handling height resize.
          root.heightProperty().addListener((observable, oldValue, newValue) -> {
              reversiBoard.setPrefHeight(newValue.doubleValue() - 120);
              reversiBoard.draw();
