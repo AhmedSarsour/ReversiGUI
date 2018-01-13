@@ -7,10 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.QuadCurve;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,9 +31,12 @@ public class SettingsController implements Initializable{
     public Button applyButton;
     @FXML
     public Button backButton,player1, player2,btnSize;
+    @FXML
+    public TextField text;
+    @FXML
+    public QuadCurve firstCurve, secondCurve;
     final String fileName = "menuInfo.txt";
     public void applyAction() {
-
         SettingsReader sr = new SettingsReader(fileName);
         //f.clearFile();
         List listSets = new ArrayList<>();
@@ -59,20 +65,22 @@ public class SettingsController implements Initializable{
             Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             //Getting the stage from the root
             Stage window = (Stage)pane.getScene().getWindow();
-
             Scene menuScene = new Scene(menu);
-
             window.setScene(menuScene);
             menuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             window.show();
         } catch (IOException e) {
-            System.out.println("Porblem reading Menu.fxml");
+            System.out.println("Problem reading Menu.fxml");
         }
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        SettingsReader f = new SettingsReader("menuInfo.txt");
+        firstColor.getSelectionModel().select(f.getFirstPlayer());
+        secondColor.getSelectionModel().select(f.getSecondPlayer());
+        size.getSelectionModel().select(f.getBoardSize() - 4);
+        f.closeTheFile();
         pane.widthProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewWidth = newValue.doubleValue()/10;
             applyButton.setPrefWidth(boardNewWidth);
@@ -83,21 +91,30 @@ public class SettingsController implements Initializable{
             player1.setPrefWidth(boardNewWidth);
             player2.setPrefWidth(boardNewWidth);
             btnSize.setPrefWidth(boardNewWidth);
+            text.setPrefWidth(newValue.doubleValue());
 
+            player1.setLayoutX(newValue.doubleValue() / 3);
+            player2.setLayoutX(newValue.doubleValue() / 3);
+            btnSize.setLayoutX(newValue.doubleValue() / 3);
+            applyButton.setLayoutX(newValue.doubleValue() / 3 + 2 * boardNewWidth / 3);
+            firstColor.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5);
+            secondColor.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5);
+            size.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5);
+            secondCurve.setLayoutX(newValue.doubleValue() - 50);
         });
         //Handaling height resize.
         pane.heightProperty().addListener((observable, oldValue, newValue) -> {
             double boardNewHeight = newValue.doubleValue()/10;
-            applyButton.setPrefHeight(boardNewHeight);
-            backButton.setPrefHeight(boardNewHeight);
+            applyButton.setPrefHeight(boardNewHeight / 2);
+            backButton.setPrefHeight(boardNewHeight / 2);
             firstColor.setPrefHeight(boardNewHeight /2);
             secondColor.setPrefHeight(boardNewHeight / 2);
             size.setPrefHeight(boardNewHeight / 2);
-            player1.setPrefWidth(boardNewHeight);
-            player2.setPrefWidth(boardNewHeight);
-            btnSize.setPrefWidth(boardNewHeight);
-
+            player1.setPrefHeight(boardNewHeight / 2);
+            player2.setPrefHeight(boardNewHeight / 2);
+            btnSize.setPrefHeight(boardNewHeight / 2);
+            text.setPrefHeight(newValue.doubleValue());
+            firstCurve.setLayoutY(newValue.doubleValue());
         });
     }
-
 }
