@@ -24,9 +24,9 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Label>
-        <Button id="btnStart" onAction="#StartAction" prefHeight="25.0" prefWidth="130.0">START GAME</Button>
-        <Button id="btnSets" onAction="#SettingsAction" prefHeight="25.0" prefWidth="125.0">SETTINGS</Button>
-        <Button id="btnEnd" onAction="#ExitAction" prefHeight="25.0" prefWidth="125.0">EXIT</Button>
+        <Button id="btnStart" onAction="#startAction" prefHeight="25.0" prefWidth="130.0">START GAME</Button>
+        <Button id="btnSets" onAction="#settingsAction" prefHeight="25.0" prefWidth="125.0">SETTINGS</Button>
+        <Button id="btnEnd" onAction="#exitAction" prefHeight="25.0" prefWidth="125.0">EXIT</Button>
     </VBox>
     <columnConstraints>
         <ColumnConstraints />

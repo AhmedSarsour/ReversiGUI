@@ -1,18 +1,20 @@
 package sample;
-//these 2 imporst are needed for the files.
 import javafx.scene.paint.Color;
-
 import java.io.*;
 import java.util.*;
 // this import is needed for "exit".
 import static java.lang.System.exit;
-//this class is made for reading the menuInformation text file.
+
+/**
+ * SettingsReader.
+ * This class is used to reading and writing to the settings file of our game.
+ */
 public class SettingsReader {
     private Scanner scanner;
     private String firstPlayer;
     private String secondPlayer;
     private int boardSize;
-
+    private final String path = "src\\sample\\";
     /**
      * SettingsReader.
      * The constuctor of our class - reading the file and setting the variables.
@@ -20,7 +22,7 @@ public class SettingsReader {
      */
     public SettingsReader(String fileName) {
         try {
-            scanner = new Scanner(new File("src\\sample\\" + fileName));
+            scanner = new Scanner(new File(path + fileName));
             //Reading the file and setting the variables.
             readFile();
         } catch (Exception e) {
@@ -34,11 +36,15 @@ public class SettingsReader {
     private void readFile() {
         int i = 0;
         while (scanner.hasNext()) {
+            //Reading every line in the file.
             if (i == 0) {
+                //Reading the first player color.
                 this.firstPlayer = scanner.next();
             } else if (i == 1) {
+                //Reading the second player color.
                 this.secondPlayer = scanner.next();
             } else if (i == 2) {
+                //Reading the board size.
                 this.boardSize = scanner.nextInt();
             }
             i++;
@@ -129,23 +135,40 @@ public class SettingsReader {
         }
     }
 
+    /**
+     * clearFile
+     * @param fileName the name of the file we want to clear.
+     * Clears the file.
+     */
     public void clearFile(String fileName) {
         try {
-            PrintWriter p = new PrintWriter("src\\sample\\" + fileName);
+            //Clearing the file by writing on it empty char.
+            PrintWriter p = new PrintWriter(path + fileName);
             p.write("");
+            //Closing the file.
             p.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("unable to clear file\n");
             exit(-1);
         }
     }
-    public void writeToFile(String fileName, List s) {
+
+    /**
+     * writeToFile.
+     * @param fileName the file we want to write on.
+     * @param lstInfo list contains - {first player color, second player color, board size}
+     * Writing to file those settings of lstInfo.
+     */
+    public void writeToFile(String fileName, List lstInfo) {
         try {
+            //First clearing the file.
             clearFile(fileName);
-            Formatter f = new Formatter("src\\sample\\" + fileName);
-            f.format("%s\n%s\n%s",s.get(0),s.get(1), s.get(2));
+            //Writing on the file by the list.
+            Formatter f = new Formatter(path + fileName);
+            f.format("%s\n%s\n%s",lstInfo.get(0),lstInfo.get(1), lstInfo.get(2));
+            //Closing the file.
             f.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Unable to write on file\n");
             exit(-1);
         }

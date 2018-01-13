@@ -1,7 +1,14 @@
 package Reversi;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import sample.AlertBox;
 import sample.ReversiBoard;
+
+import java.io.IOException;
 
 /**
  * GuiGame.
@@ -14,11 +21,16 @@ public class GuiGame extends Game {
     private ReversiBoard reversiBoard;
     //A class holds boolean in order to pass it into the mouse clicked event.
     private BlackTurn turn = new BlackTurn();
+    // The labels that show to game information.
     private Label lblCurrent = null;
     private Label lblBlack = null;
     private Label lblWhite = null;
+    // Saving the name of the first and second players color
     private String firstPlayerColor;
     private String secondPlayerColor;
+    // Getting the current parent and window of the game in order to back to the menu.
+    private HBox root;
+    private Parent menu;
 
     /**
      * GuiGame.
@@ -59,6 +71,11 @@ public class GuiGame extends Game {
         this.firstPlayerColor = firstPlayerColor;
         this.secondPlayerColor = secondPlayerColor;
     }
+
+    public void setWindowMenu(Parent menu, HBox root) {
+        this.menu = menu;
+        this.root = root;
+    }
     /**
      * checkClicked.
      * Checks if the move we want to do is ok.
@@ -98,6 +115,17 @@ public class GuiGame extends Game {
         }
     }
 
+    private void backToMenu() {
+            //Getting the stage from the root
+            Stage window = (Stage)root.getScene().getWindow();
+
+            Scene menuScene = new Scene(menu);
+
+            window.setScene(menuScene);
+            menuScene.getStylesheets().add(getClass().getResource("../sample/application.css").toExternalForm());
+
+            window.show();
+    }
     /**
      * run.
      * Running the game now with the gui.
@@ -118,7 +146,6 @@ public class GuiGame extends Game {
                     return;
                 }
                 if (blackTurn) {
-                    lblCurrent.setText("Current player: Black");
                     //Put in the game Player 1 :its your move on a label.
                     //###################REMEMBER DOING IT###############
                     SwappManager[] blackMoves = black.playerMoves();
@@ -167,18 +194,18 @@ public class GuiGame extends Game {
                     int numWhites = board.getNumberWhites();
                     // More blacks than whites - first player wins.
                     if (numBlacks > numWhites) {
-                        AlertBox.display("End of game", "The winner is the player1!");
+                        AlertBox.display("End of game", "The winner is " + firstPlayerColor);
                     } else if (numBlacks < numWhites) { //More whites than black - second player wins.
-                        AlertBox.display("End of game", "The winner is the player2!");
+                        AlertBox.display("End of game", "The winner is " + secondPlayerColor);
                     } else { //A draw - same points
                         AlertBox.display("End of game", "This is a draw!");
 
                     }
+                    AlertBox.display("End", "Now when the game has ended you will back to menu.");
+                    //After the game ends we will back to menu.
+                    backToMenu();
                 }
             }
-
-
-
 
         });
        }

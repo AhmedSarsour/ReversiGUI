@@ -10,6 +10,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
+
+/**
+ * ReversiBoard.
+ * This is a GridPane contains our board. We will use our board class and merge it with gui.
+ */
 public class ReversiBoard extends GridPane {
     //Our reversi controller in order to use it on GuiBoard.
     private ReversiBoard reversiController = this;
@@ -17,7 +22,11 @@ public class ReversiBoard extends GridPane {
     private Board board;
     //Member of point we clicked on the board.
     private Point clicked;
-    //GuiBoard
+
+    /**
+     * GuiBoard.
+     * A board that can be shown on gui.
+     */
     private class GuiBoard extends Board {
         /**
          * The constructor of our class.
@@ -38,6 +47,7 @@ public class ReversiBoard extends GridPane {
             //Height and weight by our gui size.
             int height = (int)reversiController.getPrefHeight();
             int width = (int)reversiController.getPrefWidth();
+            //Match height and weight to the current state of the screen.
             int cellHeight = height / this.rows;
             int cellWidth = width / this.cols;
             //Reading from file in order to get the color.
@@ -50,17 +60,21 @@ public class ReversiBoard extends GridPane {
             //Moving on the board items.
             for (int i = 0; i < this.rows; i++) {
                 for (int j = 0; j < this.cols; j++) {
-                    Rectangle rectangle;
-                    rectangle = new Rectangle(cellWidth, cellHeight,
+                    //Creating rectangle for each cell on the board.
+                    Rectangle rectangle  = new Rectangle(cellWidth, cellHeight,
                             Color.web("#B93A32"));
+                    //Adding the rectangee to the controller.
                     reversiController.add(rectangle, i, j);
+                    //First player
                     if (this.get(i, j) == Board.firstPlayerChar()) {
+                        //Creating circle with the first player color.
                         Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, firstColor);
                         GridPane.setConstraints(circle, i, j);
                         reversiController.getChildren().add(circle);
                     }
-
+                    //Second player
                     if (this.get(i, j) == Board.secondPlayerChar()) {
+                        //Creating circle with the second player color.
                         Circle circle = new Circle(cellWidth, cellHeight, 0.5 * cellHeight, secondColor);
                         GridPane.setConstraints(circle, i, j);
                         reversiController.getChildren().add(circle);
