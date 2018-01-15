@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="ReversiJar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ReversiJar</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="sample.Main" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="Reversi.jar">
+        <element id="module-output" name="ReversiGui" />
+      </element>
+    </root>
+  </artifact>
+</component>

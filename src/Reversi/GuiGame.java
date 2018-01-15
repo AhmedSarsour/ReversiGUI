@@ -119,11 +119,10 @@ public class GuiGame extends Game {
             //Getting the stage from the root
             Stage window = (Stage)root.getScene().getWindow();
 
-            Scene menuScene = new Scene(menu);
+            Scene menuScene = new Scene(menu, 750, 500);
 
             window.setScene(menuScene);
-            menuScene.getStylesheets().add(getClass().getResource("../sample/application.css").toExternalForm());
-
+            menuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             window.show();
     }
     /**
@@ -160,7 +159,7 @@ public class GuiGame extends Game {
                     }
                 } else { //White turn
                     //Put in the game Player 1 :its your move on a label.
-                    //###################REMEMBER DOING IT###############
+     ;               //###################REMEMBER DOING IT###############
                     SwappManager[] whiteMoves = white.playerMoves();
 
                     numWhiteMoves = white.getNumMoves();

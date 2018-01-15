@@ -6,7 +6,7 @@
 
 <?import javafx.scene.control.Label?>
 <HBox fx:id="root" spacing="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ReversiGameController">
-    <VBox id="dataGame" prefHeight="215.0" prefWidth="150.0" spacing="10">
+    <VBox id="dataGame" prefHeight="215.0" prefWidth="215.0" spacing="10">
         <Label text = "Information:" id="info"/>
         <Label id="currentPlayer"/>
         <Label id="blackScore"/>

@@ -9,14 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="menu" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
+<GridPane fx:id="menu" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
     <VBox id="start" alignment="TOP_CENTER" prefHeight="37.0" prefWidth="500.0" spacing="10">
-        <Label id="welcomeText" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="46.0" layoutY="33.0" prefHeight="74.0" prefWidth="278.0" scaleShape="false" text="Welcome to">
-            <font>
-                <Font name="AR DESTINE" size="40.0" />
-            </font>
-        </Label>
-        <Label id="welcomeText" alignment="CENTER_RIGHT" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="164.0" layoutY="81.0" mouseTransparent="true" pickOnBounds="false" prefHeight="70.0" prefWidth="441.0" scaleShape="false" text="REVERSI GAME">
+        <Label id="welcomeText" alignment="CENTER" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="154.0" layoutY="81.0" mouseTransparent="true" pickOnBounds="false" prefHeight="88.0" prefWidth="266.0"
+               scaleShape="false" text="Reversi">
             <font>
                 <Font name="AR DESTINE" size="60.0" />
             </font>
@@ -24,9 +20,9 @@
                 <Cursor fx:constant="DEFAULT" />
             </cursor>
         </Label>
-        <Button id="btnStart" onAction="#startAction" prefHeight="25.0" prefWidth="130.0">START GAME</Button>
-        <Button id="btnSets" onAction="#settingsAction" prefHeight="25.0" prefWidth="125.0">SETTINGS</Button>
-        <Button id="btnEnd" onAction="#exitAction" prefHeight="25.0" prefWidth="125.0">EXIT</Button>
+        <Button id="btnStart" onAction="#startAction" prefHeight="44.0" prefWidth="157.0">START GAME</Button>
+        <Button id="btnSets" onAction="#settingsAction" prefHeight="25.0" prefWidth="158.0">SETTINGS</Button>
+        <Button id="btnEnd" onAction="#exitAction" prefHeight="25.0" prefWidth="162.0">EXIT</Button>
     </VBox>
     <columnConstraints>
         <ColumnConstraints />

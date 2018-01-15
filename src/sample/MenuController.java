@@ -29,7 +29,7 @@ public class MenuController{
             Stage primaryStage = (Stage) menu.getScene().getWindow();
             //Loading the game.
             HBox root = (HBox)FXMLLoader.load(getClass().getResource("ReversiGame.fxml"));
-            Scene scene = new Scene(root,650,500);
+            Scene scene = new Scene(root,750,600);
             //Applying the style.
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi game");

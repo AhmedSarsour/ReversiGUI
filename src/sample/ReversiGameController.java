@@ -105,7 +105,8 @@ public class ReversiGameController implements Initializable {
                 Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
                 //Getting the stage from the root
                 Stage window = (Stage) root.getScene().getWindow();
-                Scene menuScene = new Scene(menu);
+                Scene menuScene = new Scene(menu,750,500);
+                ;
                 //Switching to the menu screen
                 window.setScene(menuScene);
                 //Adding css and showing it

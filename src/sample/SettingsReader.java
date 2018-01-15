@@ -14,7 +14,7 @@ public class SettingsReader {
     private String firstPlayer;
     private String secondPlayer;
     private int boardSize;
-    private final String path = "src\\sample\\";
+    private final String path = "";
     /**
      * SettingsReader.
      * The constuctor of our class - reading the file and setting the variables.

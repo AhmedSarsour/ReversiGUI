@@ -86,7 +86,7 @@ public class SettingsController implements Initializable{
             Parent menu = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             //Getting the stage from the root
             Stage window = (Stage)pane.getScene().getWindow();
-            Scene menuScene = new Scene(menu);
+            Scene menuScene = new Scene(menu, 750, 500);
             //Moving to the menu scene.
             window.setScene(menuScene);
             menuScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -121,22 +121,22 @@ public class SettingsController implements Initializable{
             applyButton.setPrefWidth(boardNewWidth);
             backButton.setPrefWidth(boardNewWidth);
             //Settings the width of the players.
-            firstColor.setPrefWidth(boardNewWidth + boardNewWidth / 4);
-            secondColor.setPrefWidth(boardNewWidth + boardNewWidth / 4);
-            size.setPrefWidth(boardNewWidth + boardNewWidth / 4);
-            player1.setPrefWidth(boardNewWidth);
-            player2.setPrefWidth(boardNewWidth);
+            firstColor.setPrefWidth(boardNewWidth + boardNewWidth / 2);
+            secondColor.setPrefWidth(boardNewWidth + boardNewWidth / 2);
+            size.setPrefWidth(boardNewWidth + boardNewWidth / 2);
+            player1.setPrefWidth(boardNewWidth + boardNewWidth / 3);
+            player2.setPrefWidth(boardNewWidth + boardNewWidth / 3);
             //Settings size elements.
-            btnSize.setPrefWidth(boardNewWidth);
+            btnSize.setPrefWidth(boardNewWidth + boardNewWidth / 3);
             text.setPrefWidth(newValue.doubleValue());
             //Settings layout width - the x value.
             player1.setLayoutX(newValue.doubleValue() / 3);
             player2.setLayoutX(newValue.doubleValue() / 3);
             btnSize.setLayoutX(newValue.doubleValue() / 3);
             applyButton.setLayoutX(newValue.doubleValue() / 3 + 2 * boardNewWidth / 3);
-            firstColor.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5);
-            secondColor.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5);
-            size.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5);
+            firstColor.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5 + 10);
+            secondColor.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5 + 10);
+            size.setLayoutX(newValue.doubleValue() / 3 + 6 * boardNewWidth / 5 + 10);
             secondCurve.setLayoutX(newValue.doubleValue() - 50);
             }
         );

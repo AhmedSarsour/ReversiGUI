@@ -23,7 +23,7 @@ public class Main extends Application {
             //Loading the menu.
             GridPane root = (GridPane)FXMLLoader.load(getClass().getResource("Menu.fxml"));
             //Creating scene of the menu.
-            Scene scene = new Scene(root,650,500);
+            Scene scene = new Scene(root,750,500);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             primaryStage.setTitle("Reversi game");
             //Showing the menu.
